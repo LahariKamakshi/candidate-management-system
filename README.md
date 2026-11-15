@@ -2,6 +2,9 @@
 
 A Java and Spring Boot application for managing candidate records. It includes a browser-based interface and a REST API served by the same application.
 
+# Demo video
+[Watch the demo video with explanation](https://drive.google.com/file/d/1s5zaEEfr1lEs5MdgBJjXiZLOdq6c_Aqp/view?usp=sharing)
+
 ## Features
 
 - Create, view, update, and delete candidate records
