@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Candidate Manager</title>
+	<link rel="stylesheet" href="/styles.css">
+	<script src="/app.js" defer></script>
+</head>
+<body>
+	<header class="page-header">
+		<div>
+			<p class="eyebrow">Recruitment workspace</p>
+			<h1>Candidate Manager</h1>
+			<p class="subtitle">Keep candidate records organized and easy to find.</p>
+		</div>
+	</header>
+
+	<main class="layout">
+		<section class="panel" aria-labelledby="candidate-form-title">
+			<h2 id="candidate-form-title">Add a candidate</h2>
+			<form id="candidate-form">
+				<input id="candidate-id" type="hidden">
+				<div class="form-grid">
+					<label>Full name
+						<input id="full-name" name="fullName" required maxlength="120">
+					</label>
+					<label>Email
+						<input id="email" name="email" type="email" required maxlength="254">
+					</label>
+					<label>Phone
+						<input id="phone" name="phone" type="tel" maxlength="30">
+					</label>
+					<label>Location
+						<input id="location" name="location" maxlength="120">
+					</label>
+					<label>Experience (years)
+						<input id="experience-years" name="experienceYears" type="number" min="0" max="80" required>
+					</label>
+					<label>Status
+						<select id="status" name="status" required>
+							<option value="ACTIVE">Active</option>
+							<option value="INACTIVE">Inactive</option>
+							<option value="HIRED">Hired</option>
+							<option value="ARCHIVED">Archived</option>
+						</select>
+					</label>
+					<label class="wide">Skills (comma-separated)
+						<input id="skills" name="skills" maxlength="1000" placeholder="Java, SQL, Spring">
+					</label>
+					<label>LinkedIn profile
+						<input id="linkedIn" name="linkedIn" maxlength="254" placeholder="https://www.linkedin.com/in/username">
+					</label>
+				</div>
+				<div class="actions">
+					<button id="save-button" type="submit">Save candidate</button>
+					<button id="cancel-edit" class="secondary" type="button" hidden>Cancel edit</button>
+				</div>
+			</form>
+		</section>
+
+		<section class="panel" aria-labelledby="candidate-list-title">
+			<div class="section-heading">
+				<div>
+					<h2 id="candidate-list-title">Candidates</h2>
+					<p class="muted">Search by name or email, then combine filters.</p>
+				</div>
+			</div>
+			<form id="filter-form" class="filters">
+				<label>Search
+					<input name="search" placeholder="Name or email">
+				</label>
+				<label>Location
+					<input name="location" placeholder="e.g. Bengaluru">
+				</label>
+				<label>Skill
+					<input name="skill" placeholder="e.g. Java">
+				</label>
+				<label>Status
+					<select name="status">
+						<option value="">Any status</option>
+						<option value="ACTIVE">Active</option>
+						<option value="INACTIVE">Inactive</option>
+						<option value="HIRED">Hired</option>
+						<option value="ARCHIVED">Archived</option>
+					</select>
+				</label>
+				<label>Min years
+					<input name="minExperience" type="number" min="0" max="80">
+				</label>
+				<label>Max years
+					<input name="maxExperience" type="number" min="0" max="80">
+				</label>
+				<label>LinkedIn Profile
+					<input name="linkedIn" maxlength="254" placeholder="https://www.linkedin.com/in/username">
+				</label>
+				<div class="filter-actions">
+					<button type="submit">Apply filters</button>
+					<button id="clear-filters" class="secondary" type="button">Clear</button>
+				</div>
+			</form>
+			<p id="message" class="message" role="status" aria-live="polite"></p>
+			<div class="table-wrap">
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Contact</th>
+							<th>Skills</th>
+							<th>Experience</th>
+							<th>Location</th>
+							<th>Status</th>
+							<th>LinkedIn</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody id="candidate-rows"></tbody>
+				</table>
+			</div>
+			<div class="pagination">
+				<button id="previous-page" class="secondary" type="button">Previous</button>
+				<span id="page-summary" class="muted"></span>
+				<button id="next-page" class="secondary" type="button">Next</button>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
